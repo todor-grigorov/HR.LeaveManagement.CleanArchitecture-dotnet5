@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HR.LeaveManagement.Application.Features.LeaveAlocations.Requests.Queries
 {
-    public class GetLeaveAlocationListRequest : IRequest<List<LeaveAllocationDto>>
+    public class GetLeaveAllocationListRequest : IRequest<List<LeaveAllocationDto>>
     {
     }
 }
