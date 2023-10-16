@@ -10,8 +10,14 @@ namespace HR.LeaveManagement.Application.DTOs.LeaveAllocation.Validators
     {
         private readonly ILeaveTypeRepository _leaveTypeRepository;
 
+        public CreateLeaveAllocationDtoValidator()
+        {
+        }
+
         public CreateLeaveAllocationDtoValidator(ILeaveTypeRepository leaveTypeRepository)
         {
+            _leaveTypeRepository = leaveTypeRepository;
+
             RuleFor(p => p.NumebrOfDays)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .GreaterThan(0).WithMessage("{PropertyName} must be at least 1.")
@@ -21,11 +27,11 @@ namespace HR.LeaveManagement.Application.DTOs.LeaveAllocation.Validators
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .GreaterThan(0).WithMessage("{PropertyName} must be at least 1.")
                 .NotNull()
-                 .MustAsync(async (id, token) =>
-                 {
+                .MustAsync(async (id, token) =>
+                {
                      var leaveTypeExists = await _leaveTypeRepository.Exists(id);
                      return leaveTypeExists;
-                 })
+                })
                 .WithMessage("{PropertyName} does not exist.");
 
             RuleFor(p => p.Period)
