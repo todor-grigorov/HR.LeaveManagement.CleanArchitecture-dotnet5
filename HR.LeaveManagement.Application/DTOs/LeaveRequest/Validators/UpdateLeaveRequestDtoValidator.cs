@@ -15,7 +15,7 @@ namespace HR.LeaveManagement.Application.DTOs.LeaveRequest.Validators
             _leaveRequestRepository = leaveRequestRepository;
             Include(new ILeaveRequestDtoValidator(_leaveRequestRepository));
 
-            RuleFor(p => p.Id).NotEmpty().WithMessage("{PropertyName} is required");
+            RuleFor(p => p.Id).NotNull().WithMessage("{PropertyName} is required");
         }
     }
 }
