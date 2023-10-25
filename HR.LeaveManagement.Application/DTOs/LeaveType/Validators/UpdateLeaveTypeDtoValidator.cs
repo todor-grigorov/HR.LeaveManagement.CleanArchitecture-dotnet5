@@ -11,7 +11,7 @@ namespace HR.LeaveManagement.Application.DTOs.LeaveType.Validators
         {
             Include(new ILeaveTypeDtoValidator());
 
-            RuleFor(p => p.Id).NotEmpty().WithMessage("{PropertyName} is required");
+            RuleFor(p => p.Id).NotEmpty().NotNull().WithMessage("{PropertyName} is required");
         }
     }
 }
